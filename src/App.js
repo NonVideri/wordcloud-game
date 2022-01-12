@@ -1,10 +1,14 @@
 import { useState } from 'react';
+import LoginScreen from './screens/LoginScreen';
 
-function App() {
+export default function App() {
   // 0: login screen; 1: game screen; 2: score screen
-  [screen, setScreen] = useState(0);
+  const [screen, setScreen] = useState(0);
+  const [username, setUsername] = useState(null);
 
-  return <></>;
+  return (
+    <>
+      <LoginScreen setScreen={setScreen} setUsername={setUsername} />
+    </>
+  );
 }
-
-export default App;
