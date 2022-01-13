@@ -6,9 +6,6 @@ export default function App() {
   const [screen, setScreen] = useState(0);
   const [username, setUsername] = useState(null);
 
-  return (
-    <>
-      <LoginScreen setScreen={setScreen} setUsername={setUsername} />
-    </>
-  );
+  if (screen === 0) return <LoginScreen setScreen={setScreen} setUsername={setUsername} />;
+  if (screen === 1) return;
 }

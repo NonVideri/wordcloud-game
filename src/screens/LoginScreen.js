@@ -1,14 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-
-const Container = styled.div`
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-`;
+import Container from '../components/Container';
 
 const Title = styled.h1`
   font-size: 40px;
