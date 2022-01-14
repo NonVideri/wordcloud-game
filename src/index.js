@@ -7,7 +7,7 @@ import { createGlobalStyle } from 'styled-components';
 const Style = createGlobalStyle`
   body {
     text-align: center;
-    font-family: 'Arial';
+    font-family: 'Arial', sans-serif;
   }
 `;
 

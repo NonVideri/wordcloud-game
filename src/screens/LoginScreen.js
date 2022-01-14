@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Container from '../components/Container';
+import Button from '../components/Button';
 
 const Title = styled.h1`
   font-size: 40px;
@@ -8,9 +9,10 @@ const Title = styled.h1`
 `;
 
 const NameInput = styled.input`
-  width: 100%;
+  width: 30%;
   height: 30px;
   border-radius: 3px;
+  border-color: gray;
   padding: 8px;
   margin: 16px 0px;
 
@@ -18,15 +20,6 @@ const NameInput = styled.input`
     color: black;
     opacity: 1;
   }
-`;
-
-const PlayButton = styled.button`
-  font-size: 14px;
-  color: deepSkyBlue;
-  padding: 8px 25px;
-  background-color: white;
-  border-radius: 3px;
-  border-color: deepSkyBlue;
 `;
 
 export default function LoginScreen({ setScreen, setUsername }) {
@@ -48,7 +41,7 @@ export default function LoginScreen({ setScreen, setUsername }) {
       <br />
       <NameInput value={input} onInput={handleInput} placeholder="Enter your nickname here..." />
       <br />
-      <PlayButton onClick={handleClick}>play</PlayButton>
+      <Button onClick={handleClick}>play</Button>
     </Container>
   );
 }
