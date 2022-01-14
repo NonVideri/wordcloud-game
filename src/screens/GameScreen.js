@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import mockData from '../mockData';
 import Button from '../components/Button';
 import Container from '../components/Container';
+import Item from '../components/Item';
 
 const Question = styled.h2`
   margin: 8px;
@@ -49,7 +50,11 @@ export default function GameScreen({ setScreen }) {
   return (
     <Container>
       <Question>{data?.question}</Question>
-      <WordsBox></WordsBox>
+      <WordsBox>
+        {data?.all_words.forEach((word) => (
+          <Item text={word} />
+        ))}
+      </WordsBox>
       <Button onClick={handleClick}>{!checked ? 'check answers' : 'finish game'}</Button>
     </Container>
   );
