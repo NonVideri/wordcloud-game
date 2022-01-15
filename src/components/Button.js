@@ -7,5 +7,5 @@ export default styled.button`
   background-color: white;
   border-radius: 3px;
   border-color: deepSkyBlue;
-  margin: 8px;
+  margin: 16px;
 `;

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
+import { ScoreProvider } from './contexts/ScoreContext';
 
 const Style = createGlobalStyle`
   body {
@@ -14,7 +15,9 @@ const Style = createGlobalStyle`
 ReactDOM.render(
   <React.StrictMode>
     <Style />
-    <App />
+    <ScoreProvider>
+      <App />
+    </ScoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

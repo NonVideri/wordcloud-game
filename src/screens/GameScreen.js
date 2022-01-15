@@ -1,24 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import mockData from '../mockData';
 import Button from '../components/Button';
 import Container from '../components/Container';
 import Item from '../components/Item';
+import { ScoreContext } from '../contexts/ScoreContext';
 
 const Question = styled.h2`
-  margin: 8px;
+  margin: 16px;
 `;
 
 const WordsBox = styled.div`
+  display: block;
+  position: relative;
+  margin: auto;
+  width: 600px;
+  height: 250px;
   border-style: solid;
   border-width: 1px;
   border-color: black;
+  border-radius: 5px;
   padding: 2em;
-  width: 100%;
-  height: 60%;
-  font-size: 1.5em;
   text-align: center;
-  margin: 8px;
+  font-size: 1.25em;
+  font-weight: 600;
   white-space: pre-wrap;
 `;
 
@@ -30,8 +35,8 @@ const shuffleArray = (array) => {
 };
 
 export default function GameScreen({ setScreen }) {
-  const [checked, setChecked] = useState(false);
   const [data, setData] = useState(null);
+  const { scoring, setScoring } = useContext(ScoreContext);
 
   useEffect(() => {
     const dataSet = { ...mockData[Math.floor(Math.random() * mockData.length)] };
@@ -41,21 +46,19 @@ export default function GameScreen({ setScreen }) {
   }, []);
 
   const handleClick = () => {
-    if (checked) setScreen(2);
-    else {
-      setChecked(true);
-    }
+    if (scoring) setScreen(2);
+    else setScoring(true);
   };
 
   return (
     <Container>
       <Question>{data?.question}</Question>
-      <WordsBox>
-        {data?.all_words.forEach((word) => (
-          <Item text={word} />
+      <WordsBox id="wordbox">
+        {data?.all_words.map((word, index) => (
+          <Item key={index} text={word} good={data.good_words.includes(word)} />
         ))}
       </WordsBox>
-      <Button onClick={handleClick}>{!checked ? 'check answers' : 'finish game'}</Button>
+      <Button onClick={handleClick}>{!scoring ? 'check answers' : 'finish game'}</Button>
     </Container>
   );
 }
