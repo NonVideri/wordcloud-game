@@ -12,5 +12,3 @@ export function ScoreProvider({ children }) {
     </ScoreContext.Provider>
   );
 }
-
-export const ScoreContextConsumer = ScoreContext.Consumer;

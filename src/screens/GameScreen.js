@@ -34,9 +34,11 @@ const shuffleArray = (array) => {
   }
 };
 
+const picked = [];
+
 export default function GameScreen({ setScreen }) {
   const [data, setData] = useState(null);
-  const { scoring, setScoring } = useContext(ScoreContext);
+  const { scoring, setScoring, score, setScore } = useContext(ScoreContext);
 
   useEffect(() => {
     const dataSet = { ...mockData[Math.floor(Math.random() * mockData.length)] };
@@ -55,7 +57,7 @@ export default function GameScreen({ setScreen }) {
       <Question>{data?.question}</Question>
       <WordsBox id="wordbox">
         {data?.all_words.map((word, index) => (
-          <Item key={index} text={word} good={data.good_words.includes(word)} />
+          <Item key={index} text={word} good={data.good_words.includes(word)} picked={picked} />
         ))}
       </WordsBox>
       <Button onClick={handleClick}>{!scoring ? 'check answers' : 'finish game'}</Button>
