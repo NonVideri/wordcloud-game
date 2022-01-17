@@ -1,20 +1,31 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { ScoreContext } from '../contexts/ScoreContext';
 
-const min = 15;
-const max = 25;
-
 const Word = styled.span`
+  position: relative;
   color: ${(props) => {
-    if (!props.clicked) return 'black';
-    else if (!props.scoring) return 'gray';
+    if (!props.clicked || !props.scoring) return 'black';
     else return props.good ? 'green' : 'red';
   }};
-  line-height: 2.5em;
+  line-height: 3em;
+  opacity: ${(props) => (!props.clicked ? '1' : '0.7')};
+  &:after {
+    position: absolute;
+    top: -40px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    white-space: nowrap;
+    display: ${(props) => (props.clicked && props.scoring ? 'inline' : 'none')};
+    color: ${(props) => (props.good ? 'green' : 'red')};
+    content: ${(props) => (props.good ? '"Good"' : '"Bad"')};
+  }
 `;
 
-const random = parseInt(Math.random() * (max - min) + min);
+const minWhitespace = 10;
+const maxWhitespace = 20;
+const random = parseInt(Math.random() * (maxWhitespace - minWhitespace) + minWhitespace);
 
 export default function Item({ text, good, picked }) {
   const [clicked, setClicked] = useState(false);

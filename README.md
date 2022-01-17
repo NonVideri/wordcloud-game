@@ -1,5 +1,4 @@
-# Plans for development
+# Wordcloud Game
 
-- Screens
-- Create a "GameWindow" component
-- Create a "Word" component
+- A simple word-picking game.
+- Picks a random set of words out of the available ones.

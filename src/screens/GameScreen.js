@@ -49,7 +49,18 @@ export default function GameScreen({ setScreen }) {
 
   const handleClick = () => {
     if (scoring) setScreen(2);
-    else setScoring(true);
+    else {
+      setScoring(true);
+      for (let word of data.all_words) {
+        if (data.good_words.includes(word) && picked.includes(word)) setScore((score) => score + 2);
+        if (
+          (!data.good_words.includes(word) && picked.includes(word)) ||
+          (data.good_words.includes(word) && !picked.includes(word))
+        ) {
+          setScore((score) => score - 1);
+        }
+      }
+    }
   };
 
   return (
